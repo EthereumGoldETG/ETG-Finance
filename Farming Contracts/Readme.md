@@ -1,1 +1,1 @@
-Those contract explaing the E-Farming rewards 
+Those contracts explaining the E-Farming rewards from holding your favorite stablecoin USDT , USDC and DAI .
