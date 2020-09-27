@@ -28,8 +28,8 @@ We will create a forum to vote on-chain from users .
 E-Swap :
 Will be a decentralized protocol for automated liquidity provision on Ethereum ( similar as Uniswap app ) .
 
-E-Vault :
-Our community will update & follow new strategies for maximize the returns .
+E-Vote :
+Our community will create forum to vote on-chain from users .
 
 
 Find more details in the Financial Whitepaper V3 : https://etgproject.org/Golden-Paper-ETG.pdf .
