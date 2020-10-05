@@ -1,1 +1,1 @@
-ETGF smart contract has been Audited by ANCHAIN.AL
+ETGF smart contract has been Audited by ANCHAIN.AI
