@@ -2,7 +2,7 @@
 Summary :
 =======
 
-Contract address :  0x6b86c8a9B8f12122910f587d2ac4644Add4190Cc
+Contract address :  0x8E4D251365aab1bAb38533FBe59943D389303646
 
 This is the report from a security audit performed on ETG Finance Staking contract .
 
