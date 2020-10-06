@@ -1,5 +1,9 @@
 /**
- *Submitted for verification at Etherscan.io on 2020-10-04
+ *Submitted for verification at Etherscan.io on 2020-10-05
+*/
+
+/**
+ *Submitted for verification at Etherscan.io on 2020-10-05
 */
 
 pragma solidity ^0.5.17;
@@ -55,7 +59,7 @@ contract ERC20Interface {
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
 }
 
-contract ETGFstake is Ownable {
+contract ETGFstaking is Ownable {
     using SafeMath for uint;
     
     struct StakingInfo {
@@ -68,16 +72,16 @@ contract ETGFstake is Ownable {
     uint REWARD_DIVIDER = 10**8;
     
     ERC20Interface stakingToken;
-    uint rewardPercent; //  percent value for per second  -> set 192 if you want 5% per month reward (because it will be divided by 10^8 for getting the small float number)
-    string name = "E-stake";
+    uint rewardPercent; //  percent value for per second  -> set 270 if you want 7% per month reward (because it will be divided by 10^8 for getting the small float number)
+    string name = "ETGFstaking";
     
     uint ownerTokensAmount;
     address[] internal stakeholders;
     mapping(address => StakingInfo[]) internal stakes;
 
     //  percent value for per second  
-    //  set 192 if you want 5% per month reward (because it will be divided by 10^8 for getting the small float number)
-    //  5% per month = 5 / (30 * 24 * 60 * 60) ~ 0.00000192 (192 / 10^8)
+    //  set 270 if you want 7% per month reward (because it will be divided by 10^8 for getting the small float number)
+    //  7% per month = 7 / (30 * 24 * 60 * 60) ~ 0.00000270 (270 / 10^8)
     constructor(ERC20Interface _stakingToken, uint _rewardPercent) public {
         stakingToken = _stakingToken;
         rewardPercent = _rewardPercent;
@@ -138,6 +142,7 @@ contract ETGFstake is Ownable {
             withdrawAmount = withdrawAmount.add(amount);
             
             uint rewardAmount = amount.mul((now - stakes[msg.sender][j].depositDate).mul(stakes[msg.sender][j].rewardPercent));
+            rewardAmount = rewardAmount.div(REWARD_DIVIDER);
             withdrawAmount = withdrawAmount.add(rewardAmount.div(100));
         }
         
