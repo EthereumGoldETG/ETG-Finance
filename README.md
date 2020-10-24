@@ -33,4 +33,5 @@ E-Vote :
 Our community will create forum to vote on-chain from users (Snapshot Space Governance) .
 
 
-Find more details in the Financial Whitepaper V3 : https://etgproject.org/Golden-Paper-ETG.pdf .
+More details : https://etgproject.org/ETGF.pdf 
+Chinese Version : https://etgproject.org/CN.pdf 
