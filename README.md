@@ -18,20 +18,20 @@ The new update of projects are DeFi , Yield Farming , Staking and Lending progra
 
 
 
-* E-Stake :
+* E-Stake :heavy_check_mark: :
 By holding ETGF tokens you can earn free ETGF tokens (Monthly rewards changeable depends the community vote) [More details](https://etgfinance.medium.com/staking-apy-has-been-increased-to-240-8993ba868046)
 
 * E-Farm :
 
--By providing liquidity in uniswap for ETGF ETH pair you can get ETGF rewards by staking UniLP tokens into our secured contract .
+-By providing liquidity in uniswap for ETGF ETH pair you can get ETGF rewards by staking UniLP tokens into our secured contract :hourglass: .
 
--By holding your stablecoins (BUSD , USDT ,USDC and DAI) you can earn free ETGF tokens from our verified and secured pool [More details](https://etgfinance.medium.com/e-farm-product-coming-to-community-for-stablecoins-4cec5587c23e) .
+-By holding your stablecoins (BUSD , USDT ,USDC and DAI) you can earn free ETGF tokens from our verified and secured pool [More details](https://etgfinance.medium.com/e-farm-product-coming-to-community-for-stablecoins-4cec5587c23e) :heavy_check_mark: .
 
-* E-Vote :
+* E-Vote :heavy_check_mark: :
 Our community will create forum to vote from users (Snapshot Space Governance) [More details](https://etgfinance.medium.com/team-launch-the-e-vote-for-community-97129e8f27ac
 ) . 
 
-* E-Swap :
+* E-Swap :hourglass_flowing_sand: :
 Will be a decentralized protocol for automated liquidity provision on Ethereum ( similar as Uniswap app ) .
 
 
