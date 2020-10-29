@@ -2,8 +2,8 @@
 DeFi , Farming and Staking ecosystem
 
 
-https://i.imgur.com/aUHTZ8b.png
 
+![logo](https://i.imgur.com/aUHTZ8b.png)
 
 Introduction : 
 ==============
