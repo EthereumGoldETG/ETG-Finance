@@ -3,9 +3,9 @@ DeFi , Farming and Staking ecosystem
 
 
 
-![logo](https://i.imgur.com/aUHTZ8b.png)
+![logo](https://i.imgur.com/oMxLEsP.jpg)
 
-Introduction : 
+## Introduction : 
 ==============
 
 With the development of blockchains and the emergence of new technologies, we are announcing the completion of our project in a new ecosystem based on new DeFi token called ETGF .
@@ -13,7 +13,7 @@ With the development of blockchains and the emergence of new technologies, we ar
 The new update of projects are DeFi , Yield Farming , Staking and Lending programs , which let crypto traders & holders earn free tokens , free money with secure protocols .
 
 
-ETGF Ecosystem :
+## ETGF Ecosystem :
 ================
 
 
