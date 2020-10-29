@@ -19,19 +19,23 @@ The new update of projects are DeFi , Yield Farming , Staking and Lending progra
 
 
 * E-Stake :
-By holding ETGF tokens you can earn free ETGF tokens .
+By holding ETGF tokens you can earn free ETGF tokens (Monthly rewards changeable depends the community vote) [More details](https://etgfinance.medium.com/staking-apy-has-been-increased-to-240-8993ba868046)
 
 * E-Farm :
--Farm LP to get high Yield ratio of ETGF.
 
--By holding your favorite stablecoins you can earn free ETGF tokens from our verified and secured pool .
+-By providing liquidity in uniswap for ETGF ETH pair you can get ETGF rewards by staking UniLP tokens into our secured contract .
+
+-By holding your stablecoins (BUSD , USDT ,USDC and DAI) you can earn free ETGF tokens from our verified and secured pool [More details](https://etgfinance.medium.com/e-farm-product-coming-to-community-for-stablecoins-4cec5587c23e) .
+
+* E-Vote :
+Our community will create forum to vote from users (Snapshot Space Governance) [More details](https://etgfinance.medium.com/team-launch-the-e-vote-for-community-97129e8f27ac
+) . 
 
 * E-Swap :
 Will be a decentralized protocol for automated liquidity provision on Ethereum ( similar as Uniswap app ) .
 
-* E-Vote :
-Our community will create forum to vote on-chain from users (Snapshot Space Governance) .
 
-[More details](https://etgproject.org/ETGF.pdf)
+
+[English Version](https://etgproject.org/ETGF.pdf)
 [Chinese Version](https://etgproject.org/CN.pdf)
 
