@@ -23,7 +23,7 @@ By holding ETGF tokens you can earn free ETGF tokens (Monthly rewards changeable
 
 * E-Farm :
 
--By providing liquidity in uniswap for ETGF ETH pair you can get ETGF rewards by staking UniLP tokens into our secured contract :hourglass: .
+-By providing liquidity in uniswap for ETGF ETH pair you can get ETGF rewards by staking UniLP tokens into our secured contract :heavy_check_mark: .
 
 -By holding your stablecoins (BUSD , USDT ,USDC and DAI) you can earn free ETGF tokens from our verified and secured pool [More details](https://etgfinance.medium.com/e-farm-product-coming-to-community-for-stablecoins-4cec5587c23e) :heavy_check_mark: .
 
