@@ -8,4 +8,5 @@ https://etgproject.org
 * Staking Platform 
 * Farming Platform 
 * Governance Platform
+* Swap Platfrom ( ETGF Bridge )
 
