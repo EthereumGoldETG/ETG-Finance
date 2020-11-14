@@ -32,7 +32,7 @@ Our community will create forum to vote from users (Snapshot Space Governance) [
 ) . 
 
 * E-Swap :hourglass_flowing_sand: :
-Will be a decentralized protocol for automated liquidity provision on Ethereum ( similar as Uniswap app ) .
+Will be a decentralized protocol for swap between Ethereum and Binance Smart Chain BSC ( ETGF Bridge ) .
 
 
 
