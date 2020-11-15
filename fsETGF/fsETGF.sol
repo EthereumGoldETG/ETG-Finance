@@ -1,6 +1,6 @@
 /**
  *Submitted for verification at Etherscan.io on 2020-10-26
- */
+*/
 
 // File: @openzeppelin/contracts/math/Math.sol
 
@@ -30,7 +30,7 @@ library Math {
      */
     function average(uint256 a, uint256 b) internal pure returns (uint256) {
         // (a + b) / 2 can overflow, so we distribute
-        return (a / 2) + (b / 2) + (((a % 2) + (b % 2)) / 2);
+        return (a / 2) + (b / 2) + ((a % 2 + b % 2) / 2);
     }
 }
 
@@ -92,11 +92,7 @@ library SafeMath {
      *
      * _Available since v2.4.0._
      */
-    function sub(
-        uint256 a,
-        uint256 b,
-        string memory errorMessage
-    ) internal pure returns (uint256) {
+    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
         require(b <= a, errorMessage);
         uint256 c = a - b;
 
@@ -154,11 +150,7 @@ library SafeMath {
      *
      * _Available since v2.4.0._
      */
-    function div(
-        uint256 a,
-        uint256 b,
-        string memory errorMessage
-    ) internal pure returns (uint256) {
+    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
         // Solidity only automatically asserts when dividing by 0
         require(b > 0, errorMessage);
         uint256 c = a / b;
@@ -195,11 +187,7 @@ library SafeMath {
      *
      * _Available since v2.4.0._
      */
-    function mod(
-        uint256 a,
-        uint256 b,
-        string memory errorMessage
-    ) internal pure returns (uint256) {
+    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
         require(b != 0, errorMessage);
         return a % b;
     }
@@ -222,8 +210,7 @@ pragma solidity ^0.5.0;
 contract Context {
     // Empty internal constructor, to prevent people from mistakenly deploying
     // an instance of this contract, which should be used via inheritance.
-    constructor() internal {}
-
+    constructor () internal {}
     // solhint-disable-previous-line no-empty-blocks
 
     function _msgSender() internal view returns (address payable) {
@@ -253,15 +240,12 @@ pragma solidity ^0.5.0;
 contract Ownable is Context {
     address private _owner;
 
-    event OwnershipTransferred(
-        address indexed previousOwner,
-        address indexed newOwner
-    );
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
-    constructor() internal {
+    constructor () internal {
         _owner = _msgSender();
         emit OwnershipTransferred(address(0), _owner);
     }
@@ -312,10 +296,7 @@ contract Ownable is Context {
      * @dev Transfers ownership of the contract to a new account (`newOwner`).
      */
     function _transferOwnership(address newOwner) internal {
-        require(
-            newOwner != address(0),
-            "Ownable: new owner is the zero address"
-        );
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
         emit OwnershipTransferred(_owner, newOwner);
         _owner = newOwner;
     }
@@ -347,9 +328,7 @@ interface IERC20 {
      *
      * Emits a {Transfer} event.
      */
-    function transfer(address recipient, uint256 amount)
-        external
-        returns (bool);
+    function transfer(address recipient, uint256 amount) external returns (bool);
 
     /**
      * @dev Returns the remaining number of tokens that `spender` will be
@@ -358,10 +337,7 @@ interface IERC20 {
      *
      * This value changes when {approve} or {transferFrom} are called.
      */
-    function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
@@ -388,11 +364,7 @@ interface IERC20 {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
     /**
      * @dev Emitted when `value` tokens are moved from one account (`from`) to
@@ -406,16 +378,12 @@ interface IERC20 {
      * @dev Emitted when the allowance of a `spender` for an `owner` is set by
      * a call to {approve}. `value` is the new allowance.
      */
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
 // File: @openzeppelin/contracts/utils/Address.sol
 
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.5;
 
 /**
  * @dev Collection of functions related to the address type
@@ -441,14 +409,9 @@ library Address {
         // and 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470 is returned
         // for accounts without code, i.e. `keccak256('')`
         bytes32 codehash;
-
-
-            bytes32 accountHash
-         = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
+        bytes32 accountHash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
         // solhint-disable-next-line no-inline-assembly
-        assembly {
-            codehash := extcodehash(account)
-        }
+        assembly {codehash := extcodehash(account)}
         return (codehash != 0x0 && codehash != accountHash);
     }
 
@@ -458,11 +421,7 @@ library Address {
      *
      * _Available since v2.4.0._
      */
-    function toPayable(address account)
-        internal
-        pure
-        returns (address payable)
-    {
+    function toPayable(address account) internal pure returns (address payable) {
         return address(uint160(account));
     }
 
@@ -485,23 +444,20 @@ library Address {
      * _Available since v2.4.0._
      */
     function sendValue(address payable recipient, uint256 amount) internal {
-        require(
-            address(this).balance >= amount,
-            "Address: insufficient balance"
-        );
+        require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-call-value
-        (bool success, ) = recipient.call.value(amount)("");
-        require(
-            success,
-            "Address: unable to send value, recipient may have reverted"
-        );
+        (bool success,) = recipient.call.value(amount)("");
+        require(success, "Address: unable to send value, recipient may have reverted");
     }
 }
 
 // File: @openzeppelin/contracts/token/ERC20/SafeERC20.sol
 
 pragma solidity ^0.5.0;
+
+
+
 
 /**
  * @title SafeERC20
@@ -516,83 +472,33 @@ library SafeERC20 {
     using SafeMath for uint256;
     using Address for address;
 
-    function safeTransfer(
-        IERC20 token,
-        address to,
-        uint256 value
-    ) internal {
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(token.transfer.selector, to, value)
-        );
+    function safeTransfer(IERC20 token, address to, uint256 value) internal {
+        callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));
     }
 
-    function safeTransferFrom(
-        IERC20 token,
-        address from,
-        address to,
-        uint256 value
-    ) internal {
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(token.transferFrom.selector, from, to, value)
-        );
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {
+        callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
     }
 
-    function safeApprove(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeApprove(IERC20 token, address spender, uint256 value) internal {
         // safeApprove should only be called when setting an initial allowance,
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require(
-            (value == 0) || (token.allowance(address(this), spender) == 0),
+        require((value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(token.approve.selector, spender, value)
-        );
+        callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
     }
 
-    function safeIncreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).add(
-            value
-        );
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(
-                token.approve.selector,
-                spender,
-                newAllowance
-            )
-        );
+    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).add(value);
+        callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
-    function safeDecreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(
-            value,
-            "SafeERC20: decreased allowance below zero"
-        );
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(
-                token.approve.selector,
-                spender,
-                newAllowance
-            )
-        );
+    function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
     /**
@@ -616,13 +522,9 @@ library SafeERC20 {
         (bool success, bytes memory returndata) = address(token).call(data);
         require(success, "SafeERC20: low-level call failed");
 
-        if (returndata.length > 0) {
-            // Return data is optional
+        if (returndata.length > 0) {// Return data is optional
             // solhint-disable-next-line max-line-length
-            require(
-                abi.decode(returndata, (bool)),
-                "SafeERC20: ERC20 operation did not succeed"
-            );
+            require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
     }
 }
@@ -630,6 +532,7 @@ library SafeERC20 {
 // File: contracts/IRewardDistributionRecipient.sol
 
 pragma solidity ^0.5.0;
+
 
 contract IRewardDistributionRecipient is Ownable {
     address rewardDistribution;
@@ -639,17 +542,11 @@ contract IRewardDistributionRecipient is Ownable {
     function notifyRewardAmount(uint256 reward) external;
 
     modifier onlyRewardDistribution() {
-        require(
-            _msgSender() == rewardDistribution,
-            "Caller is not reward distribution"
-        );
+        require(_msgSender() == rewardDistribution, "Caller is not reward distribution");
         _;
     }
 
-    function setRewardDistribution(address _rewardDistribution)
-        external
-        onlyOwner
-    {
+    function setRewardDistribution(address _rewardDistribution) external onlyOwner {
         rewardDistribution = _rewardDistribution;
     }
 }
@@ -657,6 +554,7 @@ contract IRewardDistributionRecipient is Ownable {
 // File: contracts/CurveRewards.sol
 
 pragma solidity ^0.5.0;
+
 
 contract LPTokenWrapper {
     using SafeMath for uint256;
@@ -670,102 +568,64 @@ contract LPTokenWrapper {
         return _totalSupply[tokenAddress];
     }
 
-    function balanceOf(address tokenAddress, address account)
-        public
-        view
-        returns (uint256)
-    {
+    function balanceOf(address tokenAddress, address account) public view returns (uint256) {
         return _balances[tokenAddress][account];
     }
 
     function tokenStake(address tokenAddress, uint256 amount) internal {
         address sender = msg.sender;
-        require(
-            !address(sender).isContract(),
-            "Andre, we are farming in peace, go harvest somewhere else sir."
-        );
+        require(!address(sender).isContract(), "Andre, we are farming in peace, go harvest somewhere else sir.");
         require(tx.origin == sender, "Andre, stahp.");
         _totalSupply[tokenAddress] = _totalSupply[tokenAddress].add(amount);
-        _balances[tokenAddress][sender] = _balances[tokenAddress][sender].add(
-            amount
-        );
+        _balances[tokenAddress][sender] = _balances[tokenAddress][sender].add(amount);
         IERC20(tokenAddress).safeTransferFrom(sender, address(this), amount);
     }
 
     function tokenWithdraw(address tokenAddress, uint256 amount) internal {
         _totalSupply[tokenAddress] = _totalSupply[tokenAddress].sub(amount);
-        _balances[tokenAddress][msg.sender] = _balances[tokenAddress][msg
-            .sender]
-            .sub(amount);
+        _balances[tokenAddress][msg.sender] = _balances[tokenAddress][msg.sender].sub(amount);
         IERC20(tokenAddress).safeTransfer(msg.sender, amount);
     }
 }
 
-contract fsETGF is LPTokenWrapper, IRewardDistributionRecipient {
+contract sETGF is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public ETGF = IERC20(0x74603e780545d02C4257E7D2BE19c74dE7BE1952);
 
     uint256 public constant DURATION = 7 days;
 
-    uint256 public totalValueLocked;
     uint256 public currentEpochReward;
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;
     uint256 public rewardPerTokenStored;
     uint256 public ownerDeposited;
+    
+    uint256 public constant MIN_STAKE = 30 * 1e18;
 
-    uint256 public constant MIN_STAKE = 31 * 1e18;
-
-    mapping(address => uint256) public stakersStartingTime;
     mapping(address => uint256) public userRewardPerTokenPaid;
     mapping(address => uint256) public rewards;
 
-    address
-        public constant USDT_TOKEN_ADDRESS = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
+    address public constant USDT_TOKEN_ADDRESS = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
+    address public constant USDC_TOKEN_ADDRESS = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
+    address public constant BUSD_TOKEN_ADDRESS = 0x4Fabb145d64652a948d72533023f6E7A623C7C53;
+    address public constant DAI_TOKEN_ADDRESS  = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
 
-    address
-        public constant USDC_TOKEN_ADDRESS = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
-
-    address
-        public constant BUSD_TOKEN_ADDRESS = 0x4Fabb145d64652a948d72533023f6E7A623C7C53;
-
-    address
-        public constant DAI_TOKEN_ADDRESS = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
-
-    address[4] public SUPPORTED_STAKING_COIN_ADDRESSES = [
-        USDT_TOKEN_ADDRESS,
-        USDC_TOKEN_ADDRESS,
-        BUSD_TOKEN_ADDRESS,
-        DAI_TOKEN_ADDRESS
-    ];
-    uint256[4] public SUPPORTED_STAKING_COIN_WEI_MULTIPLE = [
-        1000000000000,
-        1000000000000,
-        1,
-        1
-    ];
+    address[4] public SUPPORTED_STAKING_COIN_ADDRESSES = [USDT_TOKEN_ADDRESS, USDC_TOKEN_ADDRESS, BUSD_TOKEN_ADDRESS, DAI_TOKEN_ADDRESS];
+    uint256[4] public SUPPORTED_STAKING_COIN_WEI_MULTIPLE = [1000000000000, 1000000000000, 1, 1];
 
     mapping(address => uint256) public supportedStakingCoinWeiMultiple; // token_address -> wei_multiple (because USDT and USDC have decimals = 6 only. Need to multiply by 1e12)
 
     event RewardAdded(uint256 reward);
     event Burned(uint256 reward);
-    event Staked(
-        address indexed user,
-        address indexed tokenAddress,
-        uint256 amount
-    );
-    event Withdrawn(
-        address indexed user,
-        address indexed tokenAddress,
-        uint256 amount
-    );
+    event Staked(address indexed user, address indexed tokenAddress, uint256 amount);
+    event Withdrawn(address indexed user, address indexed tokenAddress, uint256 amount);
     event RewardPaid(address indexed user, uint256 reward);
     event CommissionPaid(address indexed user, uint256 reward);
-
+    
     event OwnerDeposited(uint256 amount);
     event OwnerWithdrawn(uint256 amount);
 
-    constructor() public {
+    constructor () public {
         for (uint8 i = 0; i < 4; i++) {
             supportedStakingCoinWeiMultiple[SUPPORTED_STAKING_COIN_ADDRESSES[i]] = SUPPORTED_STAKING_COIN_WEI_MULTIPLE[i];
         }
@@ -788,11 +648,7 @@ contract fsETGF is LPTokenWrapper, IRewardDistributionRecipient {
     function weiTotalSupply() public view returns (uint256) {
         uint256 __weiTotalSupply = 0;
         for (uint8 i = 0; i < 4; i++) {
-            __weiTotalSupply = __weiTotalSupply.add(
-                super.totalSupply(SUPPORTED_STAKING_COIN_ADDRESSES[i]).mul(
-                    SUPPORTED_STAKING_COIN_WEI_MULTIPLE[i]
-                )
-            );
+            __weiTotalSupply = __weiTotalSupply.add(super.totalSupply(SUPPORTED_STAKING_COIN_ADDRESSES[i]).mul(SUPPORTED_STAKING_COIN_WEI_MULTIPLE[i]));
         }
         return __weiTotalSupply;
     }
@@ -802,26 +658,21 @@ contract fsETGF is LPTokenWrapper, IRewardDistributionRecipient {
             return rewardPerTokenStored;
         }
         return
-            rewardPerTokenStored.add(
-                lastTimeRewardApplicable()
-                    .sub(lastUpdateTime)
-                    .mul(rewardRate)
-                    .mul(1e18)
-                    .div(weiTotalSupply())
-            );
+        rewardPerTokenStored.add(
+            lastTimeRewardApplicable()
+            .sub(lastUpdateTime)
+            .mul(rewardRate)
+            .mul(1e18)
+            .div(weiTotalSupply())
+        );
     }
 
     function weiBalanceOf(address account) public view returns (uint256) {
         uint256 __weiBalance = 0;
         for (uint8 i = 0; i < 4; i++) {
-            uint256 __balance = super.balanceOf(
-                SUPPORTED_STAKING_COIN_ADDRESSES[i],
-                account
-            );
+            uint256 __balance = super.balanceOf(SUPPORTED_STAKING_COIN_ADDRESSES[i], account);
             if (__balance > 0) {
-                __weiBalance = __weiBalance.add(
-                    __balance.mul(SUPPORTED_STAKING_COIN_WEI_MULTIPLE[i])
-                );
+                __weiBalance = __weiBalance.add(__balance.mul(SUPPORTED_STAKING_COIN_WEI_MULTIPLE[i]));
             }
         }
         return __weiBalance;
@@ -829,51 +680,30 @@ contract fsETGF is LPTokenWrapper, IRewardDistributionRecipient {
 
     function earned(address account) public view returns (uint256) {
         return
-            weiBalanceOf(account)
-                .mul(rewardPerToken().sub(userRewardPerTokenPaid[account]))
-                .div(1e18)
-                .add(rewards[account]);
+        weiBalanceOf(account)
+        .mul(rewardPerToken().sub(userRewardPerTokenPaid[account]))
+        .div(1e18)
+        .add(rewards[account]);
     }
 
-    function stake(address tokenAddress, uint256 amount)
-        public
-        updateReward(msg.sender)
-    {
+    function stake(address tokenAddress, uint256 amount) public updateReward(msg.sender) {
         require(amount > 0, "Cannot stake 0");
-        require(
-            supportedStakingCoinWeiMultiple[tokenAddress] > 0,
-            "Not supported coin"
-        );
-        require(
-            amount.mul(supportedStakingCoinWeiMultiple[tokenAddress]) >= MIN_STAKE,
-            "Should be more than minimum stake amount!"
-        );
+        require(supportedStakingCoinWeiMultiple[tokenAddress] > 0, "Not supported coin");
+        require(amount.mul(supportedStakingCoinWeiMultiple[tokenAddress]) > MIN_STAKE, "Should be more than minimum stake amount!");
         super.tokenStake(tokenAddress, amount);
-        stakersStartingTime[msg.sender] = block.timestamp;
-        totalValueLocked.add(amount);
         emit Staked(msg.sender, tokenAddress, amount);
     }
 
-    function withdraw(address tokenAddress, uint256 amount)
-        public
-        updateReward(msg.sender)
-    {
+    function withdraw(address tokenAddress, uint256 amount) public updateReward(msg.sender) {
         require(amount > 0, "Cannot withdraw 0");
-        require(
-            supportedStakingCoinWeiMultiple[tokenAddress] > 0,
-            "Not supported coin"
-        );
+        require(supportedStakingCoinWeiMultiple[tokenAddress] > 0, "Not supported coin");
         super.tokenWithdraw(tokenAddress, amount);
-        totalValueLocked.sub(amount);
         emit Withdrawn(msg.sender, tokenAddress, amount);
     }
 
     function exit() external {
         for (uint8 i = 0; i < 4; i++) {
-            uint256 __balance = balanceOf(
-                SUPPORTED_STAKING_COIN_ADDRESSES[i],
-                msg.sender
-            );
+            uint256 __balance = balanceOf(SUPPORTED_STAKING_COIN_ADDRESSES[i], msg.sender);
             if (__balance > 0) {
                 withdraw(SUPPORTED_STAKING_COIN_ADDRESSES[i], __balance);
             }
@@ -891,11 +721,7 @@ contract fsETGF is LPTokenWrapper, IRewardDistributionRecipient {
         }
     }
 
-    function notifyRewardAmount(uint256 reward)
-        external
-        onlyRewardDistribution
-        updateReward(address(0))
-    {
+    function notifyRewardAmount(uint256 reward) external onlyRewardDistribution updateReward(address(0)) {
         if (block.timestamp >= periodFinish) {
             rewardRate = reward.div(DURATION);
         } else {
@@ -903,18 +729,17 @@ contract fsETGF is LPTokenWrapper, IRewardDistributionRecipient {
             uint256 leftover = remaining.mul(rewardRate);
             rewardRate = reward.add(leftover).div(DURATION);
         }
-        currentEpochReward = reward;
         lastUpdateTime = block.timestamp;
         periodFinish = block.timestamp.add(DURATION);
         emit RewardAdded(reward);
     }
-
+    
     function depositOwnerTokens(uint256 amount) external onlyOwner {
         ETGF.transferFrom(msg.sender, address(this), amount);
         ownerDeposited = ownerDeposited.add(amount);
         emit OwnerDeposited(amount);
     }
-
+    
     function withdrawOwnerTokens(uint256 amount) external onlyOwner {
         ETGF.transfer(msg.sender, amount);
         ownerDeposited = ownerDeposited.sub(amount);
