@@ -1,7 +1,7 @@
 const ETGFinance = artifacts.require("ETGFinance");
-const fsETGF = artifacts.require("fsETGF");
+const sETGF = artifacts.require("sETGF");
 
 module.exports = function (deployer) {
     deployer.deploy(ETGFinance);
-    deployer.deploy(fsETGF);
+    deployer.deploy(sETGF);
 };
